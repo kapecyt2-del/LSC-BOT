@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const http = require('http');
 
-const { Client, GatewayIntentBits } = require('discord.js');
+const { Client, GatewayIntentBits, Collection } = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -13,44 +13,110 @@ const client = new Client({
     ]
 });
 
-// Ładowanie eventów
+client.commands = new Collection();
+
+
+// =======================
+// ŁADOWANIE KOMEND
+// =======================
+
+const commandsPath = path.join(__dirname, 'commands');
+
+if (fs.existsSync(commandsPath)) {
+
+    const commandFiles = fs.readdirSync(commandsPath)
+        .filter(file => file.endsWith('.js'));
+
+    for (const file of commandFiles) {
+
+        const command = require(path.join(commandsPath, file));
+
+        client.commands.set(command.data.name, command);
+
+        console.log(`✅ Załadowano komendę: ${command.data.name}`);
+    }
+
+}
+
+
+// =======================
+// ŁADOWANIE EVENTÓW
+// =======================
+
 const eventsPath = path.join(__dirname, 'events');
-const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+
+const eventFiles = fs.readdirSync(eventsPath)
+    .filter(file => file.endsWith('.js'));
+
 
 for (const file of eventFiles) {
 
     const event = require(path.join(eventsPath, file));
 
+
     if (event.once) {
-        client.once(event.name, (...args) => event.execute(...args, client));
+
+        client.once(
+            event.name,
+            (...args) => event.execute(...args, client)
+        );
+
     } else {
-        client.on(event.name, (...args) => event.execute(...args, client));
+
+        client.on(
+            event.name,
+            (...args) => event.execute(...args, client)
+        );
+
     }
 
 }
 
-// Serwer dla Rendera
+
+// =======================
+// RENDER WEB SERVER
+// =======================
+
 const PORT = process.env.PORT || 3000;
 
+
 http.createServer((req, res) => {
+
     res.writeHead(200);
+
     res.end('LSC BOT działa!');
+
 }).listen(PORT, () => {
+
     console.log('🌐 Render port działa!');
+
 });
 
 
-// Auto ping Render co 5 minut
+// =======================
+// AUTO PING RENDER
+// =======================
+
 setInterval(() => {
 
-    http.get('https://lsc-bot-zb1p.onrender.com', (res) => {
-        console.log(`🔄 Render ping: ${res.statusCode}`);
-    }).on('error', (err) => {
+    http.get(
+        'https://lsc-bot-zb1p.onrender.com',
+        (res) => {
+
+            console.log(`🔄 Render ping: ${res.statusCode}`);
+
+        }
+    ).on('error', (err) => {
+
         console.log('❌ Render ping error:', err.message);
+
     });
 
 }, 5 * 60 * 1000);
 
 
-// Start bota
+// =======================
+// START BOTA
+// =======================
+
 client.login(process.env.TOKEN);
