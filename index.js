@@ -30,12 +30,27 @@ for (const file of eventFiles) {
 }
 
 // Serwer dla Rendera
+const PORT = process.env.PORT || 3000;
+
 http.createServer((req, res) => {
     res.writeHead(200);
     res.end('LSC BOT działa!');
-}).listen(process.env.PORT || 3000, () => {
+}).listen(PORT, () => {
     console.log('🌐 Render port działa!');
 });
 
 
+// Auto ping Render co 5 minut
+setInterval(() => {
+
+    http.get('https://lsc-bot-zb1p.onrender.com', (res) => {
+        console.log(`🔄 Render ping: ${res.statusCode}`);
+    }).on('error', (err) => {
+        console.log('❌ Render ping error:', err.message);
+    });
+
+}, 5 * 60 * 1000);
+
+
+// Start bota
 client.login(process.env.TOKEN);
