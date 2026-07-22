@@ -3,6 +3,7 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
+const https = require('https');
 
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 
@@ -166,7 +167,7 @@ http.createServer((req, res) => {
 
 function renderPing() {
 
-    http.get(
+    https.get(
         'https://lsc-bot-zb1p.onrender.com',
         (res) => {
 
@@ -186,11 +187,11 @@ function renderPing() {
 console.log('⏰ Auto ping Render aktywny (co 5 minut)');
 
 
-// pierwszy ping od razu
+// pierwszy ping po starcie
 renderPing();
 
 
-// następne co 5 minut
+// kolejne pingi co 5 minut
 setInterval(renderPing, 5 * 60 * 1000);
 
 
