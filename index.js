@@ -40,6 +40,53 @@ if (fs.existsSync(commandsPath)) {
 
 
 // =======================
+// OBSŁUGA SLASH KOMEND
+// =======================
+
+client.on('interactionCreate', async interaction => {
+
+    if (!interaction.isChatInputCommand()) return;
+
+    const command = client.commands.get(interaction.commandName);
+
+    if (!command) {
+        return interaction.reply({
+            content: '❌ Nie znaleziono tej komendy.',
+            ephemeral: true
+        });
+    }
+
+
+    try {
+
+        await command.execute(interaction);
+
+    } catch (error) {
+
+        console.error(error);
+
+        if (interaction.replied || interaction.deferred) {
+
+            await interaction.followUp({
+                content: '❌ Wystąpił błąd podczas wykonywania komendy.',
+                ephemeral: true
+            });
+
+        } else {
+
+            await interaction.reply({
+                content: '❌ Wystąpił błąd podczas wykonywania komendy.',
+                ephemeral: true
+            });
+
+        }
+
+    }
+
+});
+
+
+// =======================
 // ŁADOWANIE EVENTÓW
 // =======================
 
@@ -106,6 +153,7 @@ setInterval(() => {
             console.log(`🔄 Render ping: ${res.statusCode}`);
 
         }
+
     ).on('error', (err) => {
 
         console.log('❌ Render ping error:', err.message);
