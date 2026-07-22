@@ -191,7 +191,7 @@ console.log('⏰ Auto ping Render aktywny (co 5 minut)');
 renderPing();
 
 
-// następne co 5 minut
+// kolejne pingi co 5 minut
 setInterval(renderPing, 5 * 60 * 1000);
 
 
