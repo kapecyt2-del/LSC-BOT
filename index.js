@@ -150,6 +150,8 @@ const PORT = process.env.PORT || 3000;
 
 http.createServer((req, res) => {
 
+    console.log(`🌐 Wejście HTTP: ${req.method} ${req.url}`);
+
     res.writeHead(200);
 
     res.end('LSC BOT działa!');
