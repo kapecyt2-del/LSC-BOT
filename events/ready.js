@@ -1,13 +1,19 @@
-module.exports = {
+﻿module.exports = {
     name: 'clientReady',
     once: true,
 
     execute(client) {
 
-        console.log(`✅ ${client.user.tag} jest online!`);
+        console.log(BOT  jest online!);
 
-        client.user.setActivity('Los Santos Customs 🔧', {
-            type: 3
+        client.user.setPresence({
+            activities: [
+                {
+                    name: 'Los Santos Customs',
+                    type: 3
+                }
+            ],
+            status: 'online'
         });
 
     }
