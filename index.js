@@ -164,9 +164,6 @@ http.createServer((req, res) => {
 // AUTO PING RENDER
 // =======================
 
-console.log('⏰ Auto ping Render aktywny (co 5 minut)');
-
-
 function renderPing() {
 
     http.get(
@@ -186,11 +183,14 @@ function renderPing() {
 }
 
 
-// pierwszy ping od razu po starcie
+console.log('⏰ Auto ping Render aktywny (co 5 minut)');
+
+
+// pierwszy ping od razu
 renderPing();
 
 
-// kolejne pingi co 5 minut
+// następne co 5 minut
 setInterval(renderPing, 5 * 60 * 1000);
 
 
