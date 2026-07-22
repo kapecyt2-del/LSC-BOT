@@ -167,7 +167,7 @@ http.createServer((req, res) => {
 console.log('⏰ Auto ping Render aktywny (co 5 minut)');
 
 
-setInterval(() => {
+function renderPing() {
 
     http.get(
         'https://lsc-bot-zb1p.onrender.com',
@@ -183,8 +183,15 @@ setInterval(() => {
 
     });
 
+}
 
-}, 5 * 60 * 1000);
+
+// pierwszy ping od razu po starcie
+renderPing();
+
+
+// kolejne pingi co 5 minut
+setInterval(renderPing, 5 * 60 * 1000);
 
 
 // =======================
