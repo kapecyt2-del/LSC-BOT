@@ -56,7 +56,6 @@ client.on('interactionCreate', async interaction => {
         });
     }
 
-
     try {
 
         await command.execute(interaction);
@@ -98,8 +97,7 @@ const eventFiles = fs.readdirSync(eventsPath)
 
 for (const file of eventFiles) {
 
-    const event = require(path.join(eventsPath, file));
-
+    const event = require(path.join(__dirname, 'events', file));
 
     if (event.once) {
 
@@ -143,6 +141,9 @@ http.createServer((req, res) => {
 // =======================
 // AUTO PING RENDER
 // =======================
+
+console.log('⏰ Auto ping Render aktywny (co 5 minut)');
+
 
 setInterval(() => {
 
