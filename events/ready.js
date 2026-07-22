@@ -4,7 +4,7 @@
 
     execute(client) {
 
-        console.log(BOT  jest online!);
+        console.log(`BOT ${client.user.tag} jest online!`);
 
         client.user.setPresence({
             activities: [
