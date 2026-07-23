@@ -117,7 +117,11 @@ if (fs.existsSync(eventsPath)) {
 
     for (const file of eventFiles) {
 
+        console.log(`📂 Ładowanie eventu: ${file}`);
+
         const event = require(path.join(eventsPath, file));
+
+        console.log(`✅ Załadowano event: ${event.name}`);
 
 
         if (event.once) {
@@ -159,7 +163,6 @@ http.createServer((req, res) => {
 }).listen(PORT, () => {
 
     console.log('🌐 Render port działa!');
-
 });
 
 
@@ -189,11 +192,9 @@ function renderPing() {
 console.log('⏰ Auto ping Render aktywny (co 5 minut)');
 
 
-// pierwszy ping od razu po starcie
 renderPing();
 
 
-// kolejne pingi co 5 minut
 setInterval(renderPing, 5 * 60 * 1000);
 
 
