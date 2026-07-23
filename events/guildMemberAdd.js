@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
+const path = require('path');
 const config = require('../config.json');
 
 module.exports = {
@@ -6,19 +7,26 @@ module.exports = {
 
     async execute(member) {
 
-        const channel = member.guild.channels.cache.get(config.welcomeChannel);
+        console.log(`🔥 Wszedł użytkownik: ${member.user.tag}`);
 
-        if (!channel) return;
+        try {
+
+            const channel = member.guild.channels.cache.get(config.welcomeChannel);
+
+            if (!channel) {
+                console.log('❌ Nie znaleziono kanału powitalnego');
+                return;
+            }
 
 
-        const embed = new EmbedBuilder()
-            .setColor(config.color)
-            .setAuthor({
-                name: member.user.tag,
-                iconURL: member.user.displayAvatarURL({ dynamic: true })
-            })
-            .setTitle('🔧 WITAMY W LOS SANTOS CUSTOMS')
-            .setDescription(`
+            const embed = new EmbedBuilder()
+                .setColor(config.color)
+                .setAuthor({
+                    name: member.user.tag,
+                    iconURL: member.user.displayAvatarURL({ dynamic: true })
+                })
+                .setTitle('🔧 WITAMY W LOS SANTOS CUSTOMS')
+                .setDescription(`
 👋 Siema ${member}!
 
 Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
@@ -30,23 +38,33 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
 
 🚗 Do zobaczenia w warsztacie!
 `)
-            .setImage('attachment://banner.png')
-            .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
-            .setFooter({
-                text: 'Los Santos Customs'
-            })
-            .setTimestamp();
+                .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
+                .setFooter({
+                    text: 'Los Santos Customs'
+                })
+                .setTimestamp();
 
 
-        await channel.send({
-            embeds: [embed],
-            files: [
-                {
-                    attachment: './assets/banner.png',
-                    name: 'banner.png'
-                }
-            ]
-        });
+            await channel.send({
+                embeds: [embed],
+                files: [
+                    {
+                        attachment: path.join(__dirname, '..', 'assets', 'banner.png'),
+                        name: 'banner.png'
+                    }
+                ]
+            });
+
+
+            console.log('✅ Wiadomość powitalna wysłana');
+
+
+        } catch (error) {
+
+            console.error('❌ Błąd powitania:', error);
+
+        }
+
 
 
         try {
@@ -65,7 +83,6 @@ Witamy Cię na serwerze **Los Santos Customs** 🔧
 
 🚗 Życzymy miłej gry i do zobaczenia w warsztacie!
 `)
-                .setImage('attachment://banner.png')
                 .setFooter({
                     text: 'Los Santos Customs'
                 });
@@ -75,15 +92,21 @@ Witamy Cię na serwerze **Los Santos Customs** 🔧
                 embeds: [dm],
                 files: [
                     {
-                        attachment: './assets/banner.png',
+                        attachment: path.join(__dirname, '..', 'assets', 'banner.png'),
                         name: 'banner.png'
                     }
                 ]
             });
 
 
-        } catch {
-            console.log(`Nie udało się wysłać DM do ${member.user.tag}`);
+            console.log('✅ DM wysłany');
+
+
+        } catch (error) {
+
+            console.log(`❌ Nie udało się wysłać DM do ${member.user.tag}`);
+            console.error(error);
+
         }
 
     }
