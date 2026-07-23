@@ -11,7 +11,9 @@ const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent
     ]
 });
 
@@ -121,6 +123,7 @@ if (fs.existsSync(eventsPath)) {
 
         const event = require(path.join(eventsPath, file));
 
+
         console.log(`✅ Załadowano event: ${event.name}`);
 
 
@@ -163,6 +166,7 @@ http.createServer((req, res) => {
 }).listen(PORT, () => {
 
     console.log('🌐 Render port działa!');
+
 });
 
 
