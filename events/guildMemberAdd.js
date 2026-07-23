@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
+const path = require('path');
 const config = require('../config.json');
 
 module.exports = {
@@ -24,7 +25,7 @@ module.exports = {
 Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
 
 🔔 Aby uzyskać więcej informacji:
-🎫 <#1483021913583390765>
+🎫 <#${config.ticketChannel}>
 
 📝 W tickecie napisz swoje **imię i nazwisko IC**.
 
@@ -42,11 +43,12 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
             embeds: [embed],
             files: [
                 {
-                    attachment: './assets/banner.png',
+                    attachment: path.join(__dirname, '..', 'assets', 'banner.png'),
                     name: 'banner.png'
                 }
             ]
         });
+
 
 
         try {
@@ -59,11 +61,18 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
 
 Witamy Cię na serwerze **Los Santos Customs** 🔧
 
-📖 Zapoznaj się z regulaminem oraz najważniejszymi informacjami dostępnymi na serwerze.
+🚗 Chcesz dołączyć do naszej ekipy?
 
-🎫 W razie pytań lub problemów skontaktuj się z administracją.
+🎫 Stwórz ticket:
+<#${config.ticketChannel}>
 
-🚗 Życzymy miłej gry i do zobaczenia w warsztacie!
+W tickecie wyślij:
+
+📸 SS swojego ACC
+📝 Informacje dotyczące podania
+👤 Swoje imię i nazwisko IC
+
+🔧 Do zobaczenia w warsztacie!
 `)
                 .setImage('attachment://banner.png')
                 .setFooter({
@@ -75,7 +84,7 @@ Witamy Cię na serwerze **Los Santos Customs** 🔧
                 embeds: [dm],
                 files: [
                     {
-                        attachment: './assets/banner.png',
+                        attachment: path.join(__dirname, '..', 'assets', 'banner.png'),
                         name: 'banner.png'
                     }
                 ]
