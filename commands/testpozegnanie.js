@@ -16,6 +16,14 @@ module.exports = {
     async execute(interaction) {
 
 
+        if (interaction.user.id !== '1214633024063545458') {
+            return interaction.reply({
+                content: '❌ Nie masz dostępu do tej komendy.',
+                ephemeral: true
+            });
+        }
+
+
         const channel = interaction.guild.channels.cache.get(
             config.welcomeChannel
         );
