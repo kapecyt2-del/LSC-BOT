@@ -13,7 +13,7 @@ module.exports = {
 
         .setName('testdm')
 
-        .setDescription('Wysyła testowego DM')
+        .setDescription('Wysyła testowego DM sprawdzającego wiadomość dla nowych osób')
 
         .addUserOption(option =>
             option

@@ -10,7 +10,7 @@ module.exports = {
 
     data: new SlashCommandBuilder()
         .setName('testpozegnanie')
-        .setDescription('Wysyła testową wiadomość pożegnalną'),
+        .setDescription('Pokazuje testowe pożegnanie bez wychodzenia z serwera'),
 
 
     async execute(interaction) {

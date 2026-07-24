@@ -11,7 +11,7 @@ module.exports = {
 
     data: new SlashCommandBuilder()
         .setName('testpowitanie')
-        .setDescription('Wysyła testową wiadomość powitalną'),
+        .setDescription('Pokazuje testowe powitanie bez dołączania nowej osoby'),
 
 
     async execute(interaction) {
