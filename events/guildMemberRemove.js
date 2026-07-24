@@ -25,7 +25,6 @@ module.exports = {
 
 🔧 Dziękujemy za wspólnie spędzony czas oraz mamy nadzieję, że jeszcze kiedyś zawitasz do naszego warsztatu!
 `)
-            .setImage('attachment://banner.png')
             .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
             .setFooter({
                 text: 'Los Santos Customs'
@@ -34,13 +33,7 @@ module.exports = {
 
 
         await channel.send({
-            embeds: [embed],
-            files: [
-                {
-                    attachment: './assets/banner.png',
-                    name: 'banner.png'
-                }
-            ]
+            embeds: [embed]
         });
 
     }
