@@ -11,7 +11,6 @@ module.exports = {
 
         if (!channel) return;
 
-
         const embed = new EmbedBuilder()
             .setColor(config.color)
             .setAuthor({
@@ -27,7 +26,9 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
 🔔 Aby uzyskać więcej informacji:
 🎫 <#${config.ticketChannel}>
 
-📝 W tickecie napisz swoje **imię i nazwisko IC**.
+📝 W tickecie prześlij:
+📸 SS swojego konta (ACC)
+👤 Imię i nazwisko IC
 
 🚗 Do zobaczenia w warsztacie!
 `)
@@ -37,7 +38,6 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
                 text: 'Los Santos Customs'
             })
             .setTimestamp();
-
 
         await channel.send({
             embeds: [embed],
@@ -49,8 +49,6 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
             ]
         });
 
-
-
         try {
 
             const dm = new EmbedBuilder()
@@ -59,26 +57,30 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
                 .setDescription(`
 👋 Cześć **${member.user.username}**!
 
-Witamy Cię na serwerze **Los Santos Customs** 🔧
+Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do zespołu **Los Santos Customs**. 🚗
 
-🚗 Chcesz dołączyć do naszej ekipy?
-
-🎫 Stwórz ticket:
+🎫 **Pierwszym krokiem jest utworzenie ticketa na kanale:**
 <#${config.ticketChannel}>
 
-W tickecie wyślij:
-
-📸 SS swojego ACC
-📝 Informacje dotyczące podania
+📝 **W tickecie wyślij:**
+📸 SS swojego konta (ACC)
 👤 Swoje imię i nazwisko IC
 
-🔧 Do zobaczenia w warsztacie!
+📚 **Po utworzeniu ticketa zapoznaj się z materiałami do testu na Młodszego Mechanika:**
+<#1170451221241401464>
+
+Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu oraz dalszego awansu w **Los Santos Customs**.
+
+❓ W razie pytań skontaktuj się z Kierownictwem.
+
+🔧 Powodzenia na teście i do zobaczenia w warsztacie!
 `)
                 .setImage('attachment://banner.png')
+                .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                 .setFooter({
-                    text: 'Los Santos Customs'
-                });
-
+                    text: 'Los Santos Customs • System Powitań'
+                })
+                .setTimestamp();
 
             await member.send({
                 embeds: [dm],
@@ -89,7 +91,6 @@ W tickecie wyślij:
                     }
                 ]
             });
-
 
         } catch {
             console.log(`Nie udało się wysłać DM do ${member.user.tag}`);
