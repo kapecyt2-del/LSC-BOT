@@ -44,22 +44,25 @@ module.exports = {
             .setTitle('🔧 Witamy w Los Santos Customs!')
 
             .setDescription(`
-👋 Cześć **${user.username}**!
+👋 Cześć **${user.username}!**
 
-Witamy Cię na serwerze **Los Santos Customs** 🔧
+Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do zespołu **Los Santos Customs**. 🚗
 
-🚗 Chcesz dołączyć do naszej ekipy?
-
-🎫 Stwórz ticket:
+🎫 **Pierwszym krokiem jest utworzenie ticketa na kanale:**
 <#${config.ticketChannel}>
 
-W tickecie wyślij:
+📝 **W tickecie wyślij:**
+📸 SS swojego konta (ACC)
+🪪 Imię i nazwisko IC
 
-📸 SS swojego ACC
-📝 Informacje dotyczące podania
-👤 Swoje imię i nazwisko IC
+📚 **Po utworzeniu ticketa zapoznaj się z materiałami do testu na Młodszego Mechanika:**
+<#1170451221241401464>
 
-🔧 Do zobaczenia w warsztacie!
+Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu oraz dalszego awansu w Los Santos Customs.
+
+❓ W razie pytań możesz skontaktować się z Kierownictwem.
+
+🔧 Powodzenia na teście i do zobaczenia w warsztacie!
 `)
 
             .setImage('attachment://banner.png')
@@ -67,7 +70,6 @@ W tickecie wyślij:
             .setFooter({
                 text: 'Los Santos Customs'
             });
-
 
 
         try {
@@ -89,7 +91,6 @@ W tickecie wyślij:
                 ]
 
             });
-
 
 
             await interaction.reply({
