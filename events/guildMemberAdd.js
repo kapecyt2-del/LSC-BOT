@@ -57,31 +57,27 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
                 .setColor(config.color)
                 .setTitle('🔧 Witamy w Los Santos Customs!')
                 .setDescription(`
-👋 Cześć **${member.user.username}!**
+👋 Cześć **${member.user.username}**!
 
-Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do zespołu **Los Santos Customs**. 🚗
+Witamy Cię na serwerze **Los Santos Customs** 🔧
 
-🎫 **Pierwszym krokiem jest utworzenie ticketa na kanale:**
+🚗 Chcesz dołączyć do naszej ekipy?
+
+🎫 Stwórz ticket:
 <#${config.ticketChannel}>
 
-📝 **W tickecie wyślij:**
-📸 SS swojego konta (ACC)
-🪪 Imię i nazwisko IC
+W tickecie wyślij:
 
-📚 **Po utworzeniu ticketa zapoznaj się z materiałami do testu na Młodszego Mechanika:**
-<#1170451221241401464>
+📸 SS swojego ACC
+📝 Informacje dotyczące podania
+👤 Swoje imię i nazwisko IC
 
-Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu oraz dalszego awansu w Los Santos Customs.
-
-❓ W razie pytań możesz skontaktować się z Kierownictwem.
-
-🔧 Powodzenia na teście i do zobaczenia w warsztacie!
+🔧 Do zobaczenia w warsztacie!
 `)
                 .setImage('attachment://banner.png')
                 .setFooter({
                     text: 'Los Santos Customs'
-                })
-                .setTimestamp();
+                });
 
 
             await member.send({

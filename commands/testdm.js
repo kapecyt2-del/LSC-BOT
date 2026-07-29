@@ -52,8 +52,8 @@ Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do ze
 <#${config.ticketChannel}>
 
 📝 **W tickecie wyślij:**
-📸 SS swojego konta (ACC)
 🪪 Imię i nazwisko IC
+📸 SS swojego konta (ACC)
 
 📚 **Po utworzeniu ticketa zapoznaj się z materiałami do testu na Młodszego Mechanika:**
 <#1170451221241401464>
