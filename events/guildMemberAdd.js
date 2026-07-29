@@ -11,6 +11,7 @@ module.exports = {
 
         if (!channel) return;
 
+
         const embed = new EmbedBuilder()
             .setColor(config.color)
             .setAuthor({
@@ -26,9 +27,7 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
 🔔 Aby uzyskać więcej informacji:
 🎫 <#${config.ticketChannel}>
 
-📝 W tickecie prześlij:
-📸 SS swojego konta (ACC)
-👤 Imię i nazwisko IC
+📝 W tickecie napisz swoje **imię i nazwisko IC**.
 
 🚗 Do zobaczenia w warsztacie!
 `)
@@ -38,6 +37,7 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
                 text: 'Los Santos Customs'
             })
             .setTimestamp();
+
 
         await channel.send({
             embeds: [embed],
@@ -49,13 +49,15 @@ Witamy Cię serdecznie na serwerze **Los Santos Customs** 🔧
             ]
         });
 
+
+
         try {
 
             const dm = new EmbedBuilder()
                 .setColor(config.color)
                 .setTitle('🔧 Witamy w Los Santos Customs!')
                 .setDescription(`
-👋 Cześć **${member.user.username}**!
+👋 Cześć **${member.user.username}!**
 
 Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do zespołu **Los Santos Customs**. 🚗
 
@@ -64,23 +66,23 @@ Gratulujemy! Twoje podanie zostało zaakceptowane i oficjalnie dołączasz do ze
 
 📝 **W tickecie wyślij:**
 📸 SS swojego konta (ACC)
-👤 Swoje imię i nazwisko IC
+🪪 Imię i nazwisko IC
 
 📚 **Po utworzeniu ticketa zapoznaj się z materiałami do testu na Młodszego Mechanika:**
 <#1170451221241401464>
 
-Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu oraz dalszego awansu w **Los Santos Customs**.
+Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu oraz dalszego awansu w Los Santos Customs.
 
-❓ W razie pytań skontaktuj się z Kierownictwem.
+❓ W razie pytań możesz skontaktować się z Kierownictwem.
 
 🔧 Powodzenia na teście i do zobaczenia w warsztacie!
 `)
                 .setImage('attachment://banner.png')
-                .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                 .setFooter({
-                    text: 'Los Santos Customs • System Powitań'
+                    text: 'Los Santos Customs'
                 })
                 .setTimestamp();
+
 
             await member.send({
                 embeds: [dm],
@@ -91,6 +93,7 @@ Znajdziesz tam wszystkie informacje potrzebne do przygotowania się do testu ora
                     }
                 ]
             });
+
 
         } catch {
             console.log(`Nie udało się wysłać DM do ${member.user.tag}`);
