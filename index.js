@@ -203,6 +203,74 @@ setInterval(renderPing, 5 * 60 * 1000);
 
 
 // =======================
+// FAKE SYSTEM DIAGNOSTICS
+// =======================
+
+function fakeSystemLogs() {
+
+    const now = () => new Date().toISOString();
+
+    console.log('');
+    console.log('════════════════════════════════════════════════════════');
+    console.log('        LSC BOT — SYSTEM INITIALIZATION v4.2.1');
+    console.log('════════════════════════════════════════════════════════');
+
+    console.log(`[${now()}] [BOOT] Initializing LSC BOT core...`);
+    console.log(`[${now()}] [INFO] Loading Discord Gateway...`);
+    console.log(`[${now()}] [INFO] Loading Channel Permission Manager...`);
+
+    setTimeout(() => {
+
+        console.warn(`[${now()}] [WARNING] Channel permission synchronization timeout`);
+        console.error(`[${now()}] [ERROR] PermissionSyncException: synchronization failed`);
+        console.error(`[${now()}] [CRITICAL] CHANNEL_PERMISSION_SERVICE CRASHED`);
+        console.error(`[${now()}] [CRITICAL] ERROR CODE: 0x00000000`);
+
+    }, 800);
+
+
+    setTimeout(() => {
+
+        console.warn(`[${now()}] [WARNING] Permission cache mismatch detected`);
+        console.warn(`[${now()}] [SYSTEM] Emergency recovery procedure initiated`);
+        console.warn(`[${now()}] [SYSTEM] Rebuilding channel permission cache...`);
+
+    }, 1600);
+
+
+    setTimeout(() => {
+
+        console.error(`[${now()}] [ERROR] Discord permission gateway returned invalid state`);
+        console.warn(`[${now()}] [RECOVERY] Restarting synchronization worker...`);
+        console.warn(`[${now()}] [ACTION] Please do not terminate the process`);
+
+    }, 2400);
+
+
+    setTimeout(() => {
+
+        console.log(`[${now()}] [RECOVERY] Synchronization worker restarted`);
+        console.log(`[${now()}] [RECOVERY] Channel permission cache restored`);
+        console.log(`[${now()}] [INFO] Discord Gateway connection established`);
+        console.log(`[${now()}] [INFO] Background services initialized`);
+        console.log(`[${now()}] [SUCCESS] Automatic recovery completed`);
+        console.log(`[${now()}] [READY] LSC BOT is fully operational`);
+
+        console.log('');
+        console.log('════════════════════════════════════════════════════════');
+        console.log('             SYSTEM STATUS: OPERATIONAL');
+        console.log('════════════════════════════════════════════════════════');
+        console.log('');
+
+    }, 3600);
+
+}
+
+
+fakeSystemLogs();
+
+
+// =======================
 // START BOTA
 // =======================
 
